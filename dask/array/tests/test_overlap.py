@@ -335,7 +335,7 @@ def test_map_overlap_no_depth(boundary):
     if boundary is None:
         # Can be removed after boundary default argument is changed to "none"
         # See https://github.com/dask/dask/issues/8391
-        with pytest.raises(FutureWarning):
+        with pytest.warns(FutureWarning):
             y = x.map_overlap(lambda i: i, depth=0, boundary=boundary, dtype=x.dtype)
             assert_eq(y, x)
     else:

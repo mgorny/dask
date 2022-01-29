@@ -570,7 +570,7 @@ def test_describe_empty():
         df_none.describe(), ddf_none.describe(percentiles_method="dask").compute()
     )
 
-    with pytest.raises((ValueError, RuntimeWarning)):
+    with pytest.raises(ValueError) or pytest.warns(RuntimeWarning):
         ddf_len0.describe(percentiles_method="dask").compute()
 
     with pytest.raises(ValueError):
